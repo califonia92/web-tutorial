@@ -3,33 +3,47 @@ const { gql } = require("graphql-tag");
 module.exports = gql`
   type User {
     id: ID
-    firstName: String
-    middleName: String
-    lastName: String
+    fName: String
+    mName: String
+    lName: String
+    suffix: String
     dob: String
     email: String
+    phone: String
+    street: String
+    city: String
+    state: String
+    zipCode: String
     ssn: String
-    accNum: String
   }
   input createUserInput {
-    firstName: String
-    middleName: String
-    lastName: String
+    fName: String
+    mName: String
+    lName: String
+    suffix: String
     dob: String
     email: String
+    phone: String
+    street: String
+    city: String
+    state: String
+    zipCode: String
     ssn: String
-    accNum: String
   }
 
   input updateUserInput {
-    firstName: String
-    middleName: String
-    lastName: String
-    phone:String
+    fName: String
+    mName: String
+    lName: String
+    suffix: String
     dob: String
     email: String
+    phone: String
+    street: String
+    city: String
+    state: String
+    zipCode: String
     ssn: String
-    accNum: String
   }
 
   type Query {

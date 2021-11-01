@@ -16,35 +16,44 @@ module.exports = {
   Mutation: {
     createUser: async function (
       _,
-      { input: { firstName, middleName, lastName, dob, email, ssn, accNum } },
+      {
+        input: {
+          fName,
+          mName,
+          lName,
+          dob,
+          email,
+          ssn,
+          zipCode,
+          state,
+          city,
+          phone,
+          suffix,
+        },
+      },
       context,
       info
     ) {
       try {
         const user = new User({
-          firstName,
-          middleName,
-          lastName,
+          fName,
+          mName,
+          lName,
           dob,
           email,
           ssn,
-          accNum,
+          zipCode,
+          state,
+          city,
+          phone,
+          suffix,
         });
 
         const res = await user.save();
-        return res;
-      } catch (err) {
-        throw new Error(err);
-      }
-    },
-    updateUser: async function (
-      _,
-      { input: { firstName, middleName, lastName, dob, email, ssn, accNum } },
-      context,
-      info
-    ) {
-      try {
-        const user = await User.findOne({ email: email });
+        return {
+          ...res,
+          id: res._id,
+        };
       } catch (err) {
         throw new Error(err);
       }
